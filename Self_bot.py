@@ -1,3 +1,12 @@
+# ------------------------------------------------------------------------
+# Filename   : self_bot.py
+# Description: Self bot développé par Kefta.
+# Author     : Kefta
+# Website    : https://github.com/Keftaa/Kefta_self_bot_discord
+# Version    : 1.0
+# Date       : 07/08/2023
+# ------------------------------------------------------------------------
+
 import discord
 from discord.ext import commands
 import time
