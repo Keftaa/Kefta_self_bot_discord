@@ -14,8 +14,11 @@ import time
 import asyncio
 import random
 import os
+import datetime
 
 
+def setup(bot):
+    bot.add_cog(Ping(bot))
 def get_token():
     with open('token.txt') as f:
         return f.read().strip()
@@ -33,11 +36,25 @@ async def on_ready():
 async def send_kefta_gif(ctx, delete_after=5):
     await ctx.send(KEFTA_GIF_URL, delete_after=delete_after)
 
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, discord.HTTPException):
+        if error.code == 429:  # Erreur de rate limit
+            retry_after = error.retry_after
+            await ctx.send(f"Erreur de rate limit. Réessayer après {retry_after:.2f} secondes.")
+            await asyncio.sleep(retry_after)
+            await ctx.reinvoke()
+    else:
+        raise error
+
 @bot.command(name='ping', help='Affiche la latence du bot')
 async def ping(ctx):
-    latency = round(ctx.bot.latency * 1000)
+    start_time = datetime.datetime.now()
+    end_time = datetime.datetime.now()
+    latency = (end_time - start_time).microseconds / 1000
+    bot_latency = round(bot.latency * 1000, 2)
     await ctx.send('https://cdn.discordapp.com/attachments/1137948255653728367/1137948351564890112/replace.gif', delete_after=5)
-    await ctx.send(f'᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta Pong_**:star:\n\nLatence du bot: {latency}ms', delete_after=5)
+    await ctx.send(content=f"᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta Pong_**:star:\n\nPong! Latence du bot : {bot_latency} ms, Latence du message : {latency} ms",delete_after=5)
     await ctx.send('https://cdn.discordapp.com/attachments/1137948255653728367/1137948351564890112/replace.gif', delete_after=5)
     await ctx.message.delete()
 
@@ -84,11 +101,13 @@ async def clear(ctx, amount=100):
         deleted_count = -1
         kefta= f'https://cdn.discordapp.com/attachments/1137948255653728367/1137948351564890112/replace.gif'
         async for message in ctx.channel.history(limit=500):
+            if not message.type == discord.MessageType.default:  # Vérifier si le message n'est pas un message système
+                continue
+
             if is_me and message.author.id == bot.user.id:
                 await message.delete()
                 await asyncio.sleep(1)
                 deleted_count += 1
-                
 
             if deleted_count >= amount:
                 break
@@ -112,11 +131,31 @@ async def setprefix(ctx, prefix: str):
     await ctx.send(f"᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta SetPrefix_**:star:\n\nLe préfixe a été changé en `{prefix}`.", delete_after=5)
     await send_kefta_gif(ctx, delete_after=5)
 
-@bot.command(name='parle', help='Faites parler le bot')
-async def parle(ctx, *, message: str):
+@bot.command(name='lgbt', help='Rajoute des drapeau LGBT partout')
+async def lgbt(ctx, *, message: str):
     kefta = ':rainbow_flag:'.join(message)
     await ctx.send(kefta)
     await ctx.message.delete()
+
+@bot.command(help="Permet de trouver une sexcalleuse",name="sexcalleuse")
+async def sexcalleuse(ctx):
+    await ctx.message.delete()
+    await send_kefta_gif(ctx, delete_after=5)
+    await ctx.send("᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta Sexcalleuse_**:star:\n\nEn recherche d'une sexcalleuse dans les environs...", delete_after=5)
+    await send_kefta_gif(ctx, delete_after=5)
+    await asyncio.sleep(5)
+    message = await ctx.send("Recherche en cours...")
+    await asyncio.sleep(1)
+    await message.edit(content="Recherche en cours..")
+    await asyncio.sleep(1)
+    await message.edit(content="Recherche en cours.")
+    await asyncio.sleep(1)
+    await message.edit(content="Recherche en cours..")
+    await asyncio.sleep(1)
+    await message.edit(content="Recherche en cours...")
+    await message.delete()
+    await ctx.send("Sexcalleuse trouve son profil <@1096816073417953413>",delete_after=10)
+
 
 @bot.command(help="Permet de récupérer tout les messages de la conversation dans les DM",name='savedm')
 async def savedm(ctx):
