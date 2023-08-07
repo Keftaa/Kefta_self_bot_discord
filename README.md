@@ -18,7 +18,7 @@ Le Bot Discord est un bot autonome (self-bot) développé en utilisant Python et
 3. Dans le fichier `token.txt`, mettez votre token. Assurez-vous de garder le fichier secret et ne le partagez jamais publiquement.
 4. Ouvrez une invite de commande (ou un terminal) et accédez au répertoire du projet.
 5. Installez les dépendances en exécutant la commande : `pip install -r requirements.txt`.
-6. Lancez le bot en exécutant la commande : `python main.py` ou en lançant le start.bat.
+6. Lancez le bot en exécutant la commande : `python main.py` ou en lançant le `start.bat`.
 
 ## Utilisation
 - Une fois que le bot est en ligne, vous pouvez utiliser les commandes mentionnées ci-dessus dans vos salons Discord ou en DM avec le bot.
