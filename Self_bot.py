@@ -28,17 +28,6 @@ TOKEN = get_token()
 async def on_ready():
     print(f'Connecté à {bot.user}  (ID: {bot.user.id})')
 
-
-@bot.command(hidden=True)
-async def kids(ctx):
-    await ctx.send('<@537309367129604096> depuis aujourdhui\n https://cdn.discordapp.com/attachments/1134270242147807336/1137827196153626633/macaco_triste.jpg')
-
-@bot.command(hidden=True)
-async def kids_clown(ctx):
-    for i in range(100):
-        await ctx.send('<@537309367129604096> tu es un clown !\n https://media.discordapp.net/attachments/1133840588924538880/1137828275331268711/Sans_titre.jpg', delete_after = 5)
-        await asyncio.sleep(5)
-
 @bot.command(name='ping', help='Répond pong')
 async def ping(ctx):
     await ctx.send('https://cdn.discordapp.com/attachments/1137948255653728367/1137948351564890112/replace.gif', delete_after=5)
