@@ -11,6 +11,9 @@ Le Bot Discord est un bot autonome (self-bot) développé en utilisant Python et
 - Commande `savedm`: Permet d'enregistrer tout l'historique des messages d'un DM .
 - Commande `savegrp`: Permet d'enregistrer tout l'historique des messages d'un groupe privé.
 - Commande `aide`: Affiche la liste des commandes disponibles et leur description.
+- Commande `avatar`: Affiche l'avatar d'un membre
+- Commande `banner`: Affiche la bannière d'un membre
+
 
 ## Comment installer et lancer le bot
 1. Assurez-vous d'avoir Python 3.8+ installé sur votre système.
