@@ -26,7 +26,7 @@ KEFTA_GIF_URL = "https://cdn.discordapp.com/attachments/1137948255653728367/1137
 
 categorized_commands = {
     'Utilitaire': ['ping', 'snipe', 'clear', 'savedm', 'savegrp', 'avatar', 'banner','arabe','anglais'],
-    'Troll': ['dicksize', 'gay', 'coinflip', 'iq', 'datemort', 'lgbt', 'sexcall', 'tamerelapute'], 
+    'Troll': ['dicksize', 'gay', 'coinflip', 'iq', 'datemort', 'lgbt', 'sexcall', 'tamerelapute','hack','cum'], 
     'Paramétres': ['setprefix']
 }
 
@@ -214,6 +214,164 @@ async def sexcall(ctx,user_id: int):
     await message.delete()
     await ctx.send(f"Sexcalleuse trouve son profil <@{user_id}>",delete_after=10)
 
+@bot.command(help="Permet d'éjaculer",name='cum')
+async def cum(ctx):
+    await ctx.message.delete()
+    message = await ctx.send('''
+            :ok_hand:            :smile:
+   :eggplant: :zzz: :necktie: :eggplant: 
+                   :oil:     :nose:
+                 :zap: 8=:punch:=D 
+             :trumpet:      :eggplant:''')
+    await asyncio.sleep(0.5)
+    await message.edit(content='''
+                      :ok_hand:            :smiley:
+   :eggplant: :zzz: :necktie: :eggplant: 
+                   :oil:     :nose:
+                 :zap: 8==:punch:D 
+             :trumpet:      :eggplant:  
+     ''')
+    await asyncio.sleep(0.5)
+    await message.edit(content='''
+                      :ok_hand:            :grimacing:
+   :eggplant: :zzz: :necktie: :eggplant: 
+                   :oil:     :nose:
+                 :zap: 8=:punch:=D 
+             :trumpet:      :eggplant:  
+     ''')
+    await asyncio.sleep(0.5)
+    await message.edit(content='''
+                      :ok_hand:            :persevere:
+   :eggplant: :zzz: :necktie: :eggplant: 
+                   :oil:     :nose:
+                 :zap: 8==:punch:D 
+             :trumpet:      :eggplant:   
+     ''')
+    await asyncio.sleep(0.5)
+    await message.edit(content='''
+                      :ok_hand:            :confounded:
+   :eggplant: :zzz: :necktie: :eggplant: 
+                   :oil:     :nose:
+                 :zap: 8=:punch:=D 
+             :trumpet:      :eggplant: 
+     ''')
+    await asyncio.sleep(0.5)
+    await message.edit(content='''
+                       :ok_hand:            :tired_face:
+   :eggplant: :zzz: :necktie: :eggplant: 
+                   :oil:     :nose:
+                 :zap: 8==:punch:D 
+             :trumpet:      :eggplant:    
+             ''')
+    await asyncio.sleep(0.5)
+    await message.edit(content='''
+                       :ok_hand:            :weary:
+   :eggplant: :zzz: :necktie: :eggplant: 
+                   :oil:     :nose:
+                 :zap: 8=:punch:= D:sweat_drops:
+             :trumpet:      :eggplant:        
+     ''')
+    await asyncio.sleep(0.5)
+    await message.edit(content='''
+                       :ok_hand:            :dizzy_face:
+   :eggplant: :zzz: :necktie: :eggplant: 
+                   :oil:     :nose:
+                 :zap: 8==:punch:D :sweat_drops:
+             :trumpet:      :eggplant:                 :sweat_drops:
+     ''')
+    await asyncio.sleep(0.5)
+    await message.edit(content='''
+                       :ok_hand:            :drooling_face:
+   :eggplant: :zzz: :necktie: :eggplant: 
+                   :oil:     :nose:
+                 :zap: 8==:punch:D :sweat_drops:
+             :trumpet:      :eggplant:                 :sweat_drops:
+     ''',delete_after=10)
+
+@bot.command(help='Hack un compte',name='hack')
+async def hack(ctx, user: discord.Member=None):
+    await ctx.message.delete()
+    gender = ["Homme", "Femme", "Trans", "Autre", "Retard"]
+    age = str(random.randrange(10, 25))
+    height = ['4\'6"', '4\'7"', '4\'8"', '4\'9"', '4\'10"', '4\'11"', '5\'0"', '5\'1"', '5\'2"', '5\'3"',
+            '5\'4"', '5\'5"',
+            '5\'6"', '5\'7"', '5\'8"', '5\'9"', '5\'10"', '5\'11"', '6\'0"', '6\'1"', '6\'2"', '6\'3"',
+            '6\'4"', '6\'5"',
+            '6\'6"', '6\'7"', '6\'8"', '6\'9"', '6\'10"', '6\'11"']
+    weight = str(random.randrange(60, 300))
+    hair_color = ["Noir", "Brun", "Blond", "Blanc", "Gris", "Rouge"]
+    skin_color = ["Blanc", "Pâle", "Brun", "Noir", "Peau claire"]
+    religion = ["Chrétien", "Musulman", "Athée", "Hindou", "Bouddhiste", "Juif"]
+    sexuality = ["Hétérosexuel", "Gay", "Homo", "Bi", "Bi-Sexuel", "Lesbienne", "Pansexuel"]
+    education = ["École secondaire", "Collège", "École intermédiaire", "École primaire", "École maternelle",
+                "Retard n'est jamais allé à l'école LOL"]
+    ethnicity = ["Blanc", "Afro-Américain", "Asiatique", "Latino", "Latina", "Américain", "Mexicain", "Coréen", "Chinois",
+                "Arabe", "Italien", "Porto-Ricain", "Non hispanique", "Russe", "Canadien", "Européen", "Indien"]
+    occupation = ["Retard n'a pas d'emploi LOL", "Retard certifié de Discord", "Agent d'entretien", "Agent de police", "Enseignant",
+                "Caissier", "Commis", "Serveur", "Serveuse", "Emballeur d'épicerie", "Détailleur", "Vendeur", "Artiste",
+                "Chanteur", "Rappeur", "Trappeur", "Voyou de Discord", "Gangster", "Empaqueteur de Discord", "Mécanicien", "Menuisier",
+                "Électricien", "Avocat", "Docteur", "Programmeur", "Ingénieur en logiciel", "Scientifique"]
+    salary = ["Retard ne gagne pas d'argent LOL", "$" + str(random.randrange(0, 1000)), '<50 000€', '<75 000€', "100 000€",
+            "€125 000", "150 000€", "175 000€",
+            "200 000€+"]
+    location = ["Retard vit dans le sous-sol de sa mère LOL", "France", "Paris", "Marseille", "Lyon", "Toulouse", "Bordeaux",
+            "Lille", "Nice", "Nantes", "Strasbourg", "Montpellier", "Bordeaux", "Lyon", "Nantes", "Toulouse",
+            "Lille", "Rennes", "Le Havre", "Reims", "Cergy-Pontoise", "Saint-Étienne", "Toulon", "Angers", "Grenoble",
+            "Dijon", "Nîmes", "Aix-en-Provence", "Saint-Quentin-en-Yvelines", "Brest", "Le Mans", "Amiens", "Limoges",
+            "Tours", "Clermont-Ferrand", "Villeurbanne", "Besançon", "Orléans", "Mulhouse", "Caen", "Nancy",
+            "Saint-Denis", "Rouen", "Avignon", "Nanterre", "Poitiers", "Vitry-sur-Seine", "Créteil", "Aulnay-sous-Bois",
+            "Versailles", "Pau", "Colombes", "La Rochelle"]
+    email = ["@gmail.com", "@yahoo.com", "@hotmail.com", "@outlook.com", "@protonmail.com", "@disposablemail.com",
+            "@aol.com", "@edu.com", "@icloud.com", "@gmx.net", "@yandex.com"]
+    dob = f'{random.randrange(1, 13)}/{random.randrange(1, 32)}/{random.randrange(1950, 2021)}'
+    name = ['Alexis Fontaine', 'Pierre Dupont', 'Antoine Durand', 'Louis Pollet', 'Johan Picard', 'Léonard Caudron', 'Gabriel Brunet', 'Hugo Vincent', 'Léon Boé', 'Arsène Royer',
+        'Côme Pollet', 'Achille Boyer', 'Hector Morel', 'Félix Bourhis', 'Alexis Clavel', 'Charles Moulin', 'Auguste Mercier', 'Léandre Boé', 'Nathan Roussel', 'Noé Duval',
+        'Zoé Derambure', 'Salomé Derambure', 'Célestine Roux', 'Ambre Fortin', 'Aurore Roy', 'Sophie Jean', 'Suzanne Lenne', 'Mathilde Mercier', 'Mélina Coolen', 'Céleste Boé',
+        'Florian Durand', 'Manon da Silva', 'Ninon Fretigny', 'Olivia Brun', 'Célestine Huart', 'Augustine Lenne', 'Maeva Mauvieux', 'Augustine Bertrand', 'Charline Baron', 'Manon Garnier']
+    phone = f'07.{"%02d.%02d.%02d.%02d" % (random.randint(0, 99), random.randint(0, 99), random.randint(0, 99), random.randint(0, 99))}'
+    if user is None:
+        user = ctx.author
+        password = ['motdepasse', '123', 'monmotdepasseestmotdepasse', user.name + "estcool123", user.name + "estpapa",
+                    "papa" + user.name, "jaimediscord", "j<3discord", "furryporn456", "secret", "123456789", "pomme49",
+                    "redskins32", "princesse", "dragon", "motdepasse1", "1q2w3e4r", "jaimelesfurries"]
+        message = await ctx.send(f"`Piratage de {user}...\n`")
+        await asyncio.sleep(1)
+        await message.edit(content=f"`Piratage de {user}...\nPiratage dans le réseau principal...\n`")
+        await asyncio.sleep(1)
+        await message.edit(content=f"`Piratage de {user}...\nPiratage dans le réseau principal...\nMise en cache des données...`")
+        await asyncio.sleep(1)
+        await message.edit(
+            content=f"`Piratage de {user}...\nPiratage dans le réseau principal...\nMise en cache des données...\nDécodage des informations du SSN...\n`")
+        await asyncio.sleep(1)
+        await message.edit(
+            content=f"`Piratage de {user}...\nPiratage dans le réseau principal...\nMise en cache des données...\nDécodage des informations du SSN...\nForçage des détails de la vie amoureuse...`")
+        await asyncio.sleep(1)
+        await message.edit(
+            content=f"`Piratage de {user}...\nPiratage dans le réseau principal...\nMise en cache des données...\nDécodage des informations du SSN...\nForçage des détails de la vie amoureuse...\nFinalisation des détails de la vie du dossier sur la durée de vie\n`")
+        await asyncio.sleep(1)
+        await message.edit(
+            content=f"```Piratage réussi de {user}\nNom : {random.choice(name)}\nGenre : {random.choice(gender)}\nÂge : {age}\nTaille : {random.choice(height)}\nPoids : {weight}\nCouleur des cheveux : {random.choice(hair_color)}\nCouleur de la peau : {random.choice(skin_color)}\nDate de naissance : {dob}\nEmplacement : {random.choice(location)}\nTéléphone : {phone}\nE-mail : {user.name + random.choice(email)}\nMots de passe : {random.choices(password, k=3)}\nProfession : {random.choice(occupation)}\nSalaire annuel : {random.choice(salary)}\nEthnicité : {random.choice(ethnicity)}\nReligion : {random.choice(religion)}\nSexualité : {random.choice(sexuality)}\nÉducation : {random.choice(education)}```")
+    else:
+        password = ['motdepasse', '123', 'monmotdepasseestmotdepasse', user.name + "estcool123", user.name + "estpapa",
+                    "papa" + user.name, "jaimediscord", "j<3discord", "furryporn456", "secret", "123456789", "pomme49",
+                    "redskins32", "princesse", "dragon", "motdepasse1", "1q2w3e4r", "jaimelesfurries"]
+        message = await ctx.send(f"`Piratage de {user}...\n`")
+        await asyncio.sleep(1)
+        await message.edit(content=f"`Piratage de {user}...\nPiratage dans le réseau principal...\n`")
+        await asyncio.sleep(1)
+        await message.edit(content=f"`Piratage de {user}...\nPiratage dans le réseau principal...\nMise en cache des données...`")
+        await asyncio.sleep(1)
+        await message.edit(
+            content=f"`Piratage de {user}...\nPiratage dans le réseau principal...\nMise en cache des données...\nDécodage des informations du SSN...\n`")
+        await asyncio.sleep(1)
+        await message.edit(
+            content=f"`Piratage de {user}...\nPiratage dans le réseau principal...\nMise en cache des données...\nDécodage des informations du SSN...\nForçage des détails de la vie amoureuse...`")
+        await asyncio.sleep(1)
+        await message.edit(
+            content=f"`Piratage de {user}...\nPiratage dans le réseau principal...\nMise en cache des données...\nDécodage des informations du SSN...\nForçage des détails de la vie amoureuse...\nFinalisation des détails de la vie du dossier sur la durée de vie\n`")
+        await asyncio.sleep(1)
+        await message.edit(
+            content=f"```Piratage réussi de {user}\nNom : {random.choice(name)}\nGenre : {random.choice(gender)}\nÂge : {age}\nTaille : {random.choice(height)}\nPoids : {weight}\nCouleur des cheveux : {random.choice(hair_color)}\nCouleur de la peau : {random.choice(skin_color)}\nDate de naissance : {dob}\nEmplacement : {random.choice(location)}\nTéléphone : {phone}\nE-mail : {user.name + random.choice(email)}\nMots de passe : {random.choices(password, k=3)}\nProfession : {random.choice(occupation)}\nSalaire annuel : {random.choice(salary)}\nEthnicité : {random.choice(ethnicity)}\nReligion : {random.choice(religion)}\nSexualité : {random.choice(sexuality)}\nÉducation : {random.choice(education)}```",delete_after=60)
 
 ###################################################################################################
 
