@@ -6,8 +6,6 @@
 # Version    : 1.1
 # Date       : 10/08/2023
 # ------------------------------------------------------------------------
-
-
 import discord
 from discord.ext import commands
 import asyncio
@@ -26,7 +24,7 @@ KEFTA_GIF_URL = "https://cdn.discordapp.com/attachments/1137948255653728367/1137
 
 categorized_commands = {
     'Utilitaire': ['ping', 'snipe', 'clear', 'savedm', 'savegrp', 'avatar', 'banner','arabe','anglais'],
-    'Troll': ['dicksize', 'gay', 'coinflip', 'iq', 'datemort', 'lgbt', 'sexcall', 'tamerelapute','hack','cum'], 
+    'Troll': ['dicksize', 'gay', 'coinflip', 'iq', 'datemort', 'lgbt', 'sexcall', 'tamerelapute','hack','cum','fakeaudio'], 
     'Paramétres': ['setprefix']
 }
 
@@ -60,9 +58,7 @@ async def ping(ctx):
     end_time = datetime.datetime.now()
     latency = (end_time - start_time).microseconds / 1000
     bot_latency = round(bot.latency * 1000, 2)
-    #await ctx.send('https://cdn.discordapp.com/attachments/1137948255653728367/1137948351564890112/replace.gif', delete_after=5)
     await ctx.send(content=f"᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta Pong_**:star:\n\nPong! Latence du bot : {bot_latency} ms, Latence du message : {latency} ms",delete_after=5)
-    #await ctx.send('https://cdn.discordapp.com/attachments/1137948255653728367/1137948351564890112/replace.gif', delete_after=5)
     await ctx.message.delete()
 
 @bot.event
@@ -125,6 +121,16 @@ async def anglais(ctx, *, texte):
 
 
 #######################################Troll commands################################################
+
+@bot.command(name='fakeaudio',help='Envoie un faux message vocal',category='Troll')
+async def fakeaudio(ctx):
+    await ctx.message.delete()
+    audio= "https://cdn.discordapp.com/attachments/1137948255653728367/1139185795371106406/ED6EFBC5-A68E-48C6-9103-B123B1ECC22D.gif"
+    try:
+        await ctx.send(f'{audio}',delete_after=10)
+    except discord.HTTPException as e:
+        await ctx.send('Les images sont lock ici',delete_after=5)
+
 
 @bot.command(name='dicksize', help='Affiche aléatoirement la taille d\'un pénis.',category='Troll')
 async def dicksize(ctx, member: discord.Member = None):
@@ -198,9 +204,7 @@ async def lgbt(ctx, *, message: str):
 @bot.command(help="Permet de trouver une sexcalleuse",name="sexcall",category='Troll')
 async def sexcall(ctx,user_id: int):
     await ctx.message.delete()
-    #await send_kefta_gif(ctx, delete_after=5)
     await ctx.send("᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta Sexcalleuse_**:star:\n\nEn recherche d'une sexcalleuse dans les environs...", delete_after=5)
-    #await send_kefta_gif(ctx, delete_after=5)
     await asyncio.sleep(5)
     message = await ctx.send("Recherche en cours...")
     await asyncio.sleep(1)
@@ -323,7 +327,7 @@ async def hack(ctx, user: discord.Member=None):
             "Versailles", "Pau", "Colombes", "La Rochelle"]
     email = ["@gmail.com", "@yahoo.com", "@hotmail.com", "@outlook.com", "@protonmail.com", "@disposablemail.com",
             "@aol.com", "@edu.com", "@icloud.com", "@gmx.net", "@yandex.com"]
-    dob = f'{random.randrange(1, 13)}/{random.randrange(1, 32)}/{random.randrange(1950, 2021)}'
+    dob = f'{random.randrange(1, 32)}/{random.randrange(1, 13)}/{random.randrange(1950, 2021)}'
     name = ['Alexis Fontaine', 'Pierre Dupont', 'Antoine Durand', 'Louis Pollet', 'Johan Picard', 'Léonard Caudron', 'Gabriel Brunet', 'Hugo Vincent', 'Léon Boé', 'Arsène Royer',
         'Côme Pollet', 'Achille Boyer', 'Hector Morel', 'Félix Bourhis', 'Alexis Clavel', 'Charles Moulin', 'Auguste Mercier', 'Léandre Boé', 'Nathan Roussel', 'Noé Duval',
         'Zoé Derambure', 'Salomé Derambure', 'Célestine Roux', 'Ambre Fortin', 'Aurore Roy', 'Sophie Jean', 'Suzanne Lenne', 'Mathilde Mercier', 'Mélina Coolen', 'Céleste Boé',
@@ -392,7 +396,6 @@ async def clear(ctx, amount=100):
                     await asyncio.sleep(0.5)
                     deleted_count += 1
             except discord.NotFound:
-                # Handle "404 Not Found (error code: 10008)" error-help
                 pass
 
             if deleted_count >= amount:
