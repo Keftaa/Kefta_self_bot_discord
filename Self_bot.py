@@ -3,7 +3,7 @@
 # Description: Self bot développé par Kefta.
 # Author     : Kefta
 # Website    : https://github.com/Keftaa/Kefta_self_bot_discord
-# Version    : 1.1
+# Version    : 1.2
 # Date       : 10/08/2023
 # ------------------------------------------------------------------------
 import discord
@@ -12,6 +12,7 @@ import asyncio
 import os
 import datetime
 import random
+import fade
 import datetime
 from babel.dates import format_date
 from googletrans import Translator
@@ -20,12 +21,15 @@ bot = commands.Bot(command_prefix='-',self_bot=True, help_command=None)
 snipe_message_author = {}
 snipe_message_content = {}
 snipe_message_deletion_time = {}
+start_time = datetime.datetime.utcnow()
 KEFTA_GIF_URL = "https://cdn.discordapp.com/attachments/1137948255653728367/1137948351564890112/replace.gif"
 
 categorized_commands = {
-    'Utilitaire': ['ping', 'snipe', 'clear', 'savedm', 'savegrp', 'avatar', 'banner','arabe','anglais'],
-    'Troll': ['dicksize', 'gay', 'coinflip', 'iq', 'datemort', 'lgbt', 'sexcall', 'tamerelapute','hack','cum','fakeaudio'], 
-    'Paramétres': ['setprefix']
+    'Utilitaire': ['ping', 'snipe', 'clear','avatar', 'banner','arabe','anglais','uptime'],
+    'Admin commande': ['stealallpdp','savegrp','savedm'],
+    'Troll': ['dicksize', 'gay', 'coinflip', 'iq', 'datemort', 'lgbt', 'sexcall', 'tamerelapute','hack','fakeaudio'], 
+    'NFSW': ['cum'],
+    'Paramétres': ['setprefix','cls']
 }
 
 def get_token():
@@ -33,10 +37,31 @@ def get_token():
         return f.read().strip()
 TOKEN = get_token()
 
+def Dump(ctx):
+    if ctx.guild is None:
+        ctx.send("Cette commande ne peut être exécutée que dans un serveur.")
+        return
+    
+    with open(f'Images/{ctx.guild.id}-Dump.txt', 'a+') as f:
+        for member in ctx.guild.members:
+            avatar_url= member.avatar
+            f.write(str(avatar_url) + '\n')
+            
+
+
 @bot.event
 async def on_ready():
     os.system('cls')
-    print(f'Connecté à {bot.user}  (ID: {bot.user.id})')
+    print(fade.purpleblue(f"""
+                 __  __     ______     ______   ______   ______    
+                /\ \/ /    /\  ___\   /\  ___\ /\__  _\ /\  __ \   
+                \ \  _"-.  \ \  __\   \ \  __\ \/_/\ \/ \ \  __ \  
+                 \ \_\ \_\  \ \_____\  \ \_\      \ \_\  \ \_\ \_\ 
+                  \/_/\/_/   \/_____/   \/_/       \/_/   \/_/\/_/ """))
+    print(fade.purpleblue(f"""┌────────────────────────────────────────────────────────────────────────────────────────┐"""))
+    print(fade.purpleblue(f"                                Kefte Self bot - by Kefta"))
+    print(fade.purpleblue(f"                         Connected: {bot.user.name}#{bot.user.discriminator} | Servers: {len(bot.guilds)}"))
+    print(fade.purpleblue(f"""└────────────────────────────────────────────────────────────────────────────────────────┘"""))
 
 async def send_kefta_gif(ctx, delete_after=5):
     await ctx.send(KEFTA_GIF_URL, delete_after=delete_after)
@@ -51,16 +76,7 @@ async def on_command_error(ctx, error):
             await ctx.reinvoke()
     else:
         raise error
-
-@bot.command(name='ping', help='Affiche la latence du bot',category='Utilitaire')
-async def ping(ctx):
-    start_time = datetime.datetime.now()
-    end_time = datetime.datetime.now()
-    latency = (end_time - start_time).microseconds / 1000
-    bot_latency = round(bot.latency * 1000, 2)
-    await ctx.send(content=f"᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta Pong_**:star:\n\nPong! Latence du bot : {bot_latency} ms, Latence du message : {latency} ms",delete_after=5)
-    await ctx.message.delete()
-
+    
 @bot.event
 async def on_message_delete(message):
     channel_id = message.channel.id
@@ -76,6 +92,56 @@ async def on_message_delete(message):
 
     snipe_message_author.pop(message.channel.id, None)
     snipe_message_content.pop(message.channel.id, None)
+
+@bot.command(name='ping', help='Affiche la latence du bot',category='Utilitaire')
+async def ping(ctx):
+    start_time = datetime.datetime.now()
+    end_time = datetime.datetime.now()
+    latency = (end_time - start_time).microseconds / 1000
+    bot_latency = round(bot.latency * 1000, 2)
+    await ctx.send(content=f"᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta Pong_**:star:\n\nPong! Latence du bot : {bot_latency} ms, Latence du message : {latency} ms",delete_after=5)
+    await ctx.message.delete()
+
+@bot.command(name='stealallpdp',help='Permet de récuperer toute les pp d\'un server')
+async def steal_all_pdp(ctx):
+    await ctx.message.delete()
+    Dump(ctx)
+    await ctx.send('Finis !')
+
+
+@bot.command(name='clearimages', help='Efface tous les fichiers du dossier Images')
+async def clear_images(ctx):
+    await ctx.send("Êtes-vous sûr de vouloir supprimer tous les fichiers du dossier Images ? Répondez avec 'oui' ou 'non'.",delete_after=5)
+
+    def check(response):
+        return response.author == ctx.author and response.channel == ctx.channel
+
+    try:
+        response = await bot.wait_for('message', timeout=15, check=check)
+
+        if response.content.lower() == 'oui':
+            folder = 'Images'
+            file_list = [f for f in os.listdir(folder)]
+            
+            if file_list:
+                for file_name in file_list:
+                    file_path = os.path.join(folder, file_name)
+                    os.remove(file_path)
+                await ctx.send("Tous les fichiers ont été supprimés avec succès.",delete_after=5)
+            else:
+                await ctx.send("Le dossier Images est déjà vide.",delete_after=5)
+        else:
+            await ctx.send("Opération annulée.",delete_after=5)
+    except asyncio.TimeoutError:
+        await ctx.send("Temps écoulé. Opération annulée.",delete_after=5)
+
+@bot.command(name='uptime',help='Permet de savoir depuis quand le bot est en ligne')
+async def uptime(ctx):
+    await ctx.message.delete()
+    uptime = datetime.datetime.utcnow() - start_time
+    uptime = str(uptime).split('.')[0]
+    await ctx.send(f'`'+uptime+'`')
+
 
 @bot.command(name= 'snipe', help='Permet de voir le dernier message supprimé du salon',category='Utilitaire')
 async def snipe(ctx):
@@ -102,6 +168,11 @@ async def snipe(ctx):
         await ctx.send("Pas de message récent supprimé ici.")
     await ctx.message.delete()
 
+@bot.command(name='cls',help='Clear la console')
+async def cls(ctx):
+    await ctx.message.delete()
+    os.system('cls')
+    await ctx.send('Console clear !',delete_after=3)
 
 @bot.command(name='arabe',help='Traduit un texte en arabe',category='Utilitaire')
 async def arabe(ctx, *, texte):
@@ -216,7 +287,7 @@ async def sexcall(ctx,user_id: int):
     await asyncio.sleep(1)
     await message.edit(content="Recherche en cours...")
     await message.delete()
-    await ctx.send(f"Sexcalleuse trouve son profil <@{user_id}>",delete_after=10)
+    await ctx.send(f"Sexcalleuse trouvé son profil <@{user_id}>",delete_after=10)
 
 @bot.command(help="Permet d'éjaculer",name='cum')
 async def cum(ctx):
