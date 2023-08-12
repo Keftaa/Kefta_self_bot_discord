@@ -10,12 +10,12 @@ import discord
 from discord.ext import commands
 import asyncio
 import os
-import datetime
 import random
 import fade
 import datetime
 from babel.dates import format_date
 from googletrans import Translator
+
 
 bot = commands.Bot(command_prefix='-',self_bot=True, help_command=None)
 snipe_message_author = {}
@@ -26,7 +26,7 @@ KEFTA_GIF_URL = "https://cdn.discordapp.com/attachments/1137948255653728367/1137
 
 categorized_commands = {
     'Utilitaire': ['ping', 'snipe', 'clear','avatar', 'banner','arabe','anglais','uptime'],
-    'Admin commande': ['stealallpdp','savegrp','savedm'],
+    'Admin commande': ['saveallpdp','savegrp','savedm'],
     'Troll': ['dicksize', 'gay', 'coinflip', 'iq', 'datemort', 'lgbt', 'sexcall', 'tamerelapute','hack','fakeaudio'], 
     'NFSW': ['cum'],
     'Paramétres': ['setprefix','cls']
@@ -59,8 +59,8 @@ async def on_ready():
                  \ \_\ \_\  \ \_____\  \ \_\      \ \_\  \ \_\ \_\ 
                   \/_/\/_/   \/_____/   \/_/       \/_/   \/_/\/_/ """))
     print(fade.purpleblue(f"""┌────────────────────────────────────────────────────────────────────────────────────────┐"""))
-    print(fade.purpleblue(f"                                Kefte Self bot - by Kefta"))
-    print(fade.purpleblue(f"                         Connected: {bot.user.name}#{bot.user.discriminator} | Servers: {len(bot.guilds)}"))
+    print(fade.purpleblue(f"                                Kefta Self bot - by Kefta"))
+    print(fade.purpleblue(f"                         Connecté: {bot.user.name}#{bot.user.discriminator} | Servers: {len(bot.guilds)}"))
     print(fade.purpleblue(f"""└────────────────────────────────────────────────────────────────────────────────────────┘"""))
 
 async def send_kefta_gif(ctx, delete_after=5):
@@ -77,6 +77,7 @@ async def on_command_error(ctx, error):
     else:
         raise error
     
+
 @bot.event
 async def on_message_delete(message):
     channel_id = message.channel.id
@@ -102,8 +103,8 @@ async def ping(ctx):
     await ctx.send(content=f"᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta Pong_**:star:\n\nPong! Latence du bot : {bot_latency} ms, Latence du message : {latency} ms",delete_after=5)
     await ctx.message.delete()
 
-@bot.command(name='stealallpdp',help='Permet de récuperer toute les pp d\'un server')
-async def steal_all_pdp(ctx):
+@bot.command(name='saveallpdp',help='Permet de récuperer toute les pp d\'un server')
+async def save_all_pdp(ctx):
     await ctx.message.delete()
     Dump(ctx)
     await ctx.send('Finis !')
@@ -134,6 +135,7 @@ async def clear_images(ctx):
             await ctx.send("Opération annulée.",delete_after=5)
     except asyncio.TimeoutError:
         await ctx.send("Temps écoulé. Opération annulée.",delete_after=5)
+
 
 @bot.command(name='uptime',help='Permet de savoir depuis quand le bot est en ligne')
 async def uptime(ctx):
@@ -471,13 +473,9 @@ async def clear(ctx, amount=100):
 
             if deleted_count >= amount:
                 break
-        #await send_kefta_gif(ctx, delete_after=5)
         await ctx.send(f'᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta Clear_**:star:\n\n{deleted_count} messages supprimé gg well played', delete_after=5)
-        #await send_kefta_gif(ctx, delete_after=5)
     else:
-        #await send_kefta_gif(ctx, delete_after=5)
         await ctx.send("᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta Clear_**:star:\n\na commande fonctionne que dans les dm",deleted_after=5)
-        #await send_kefta_gif(ctx, delete_after=5)
     await ctx.message.delete()
 
 
@@ -487,9 +485,7 @@ async def setprefix(ctx, prefix: str):
     global current_prefix
     current_prefix = prefix
     bot.command_prefix = prefix
-    #await send_kefta_gif(ctx, delete_after=5)
     await ctx.send(f"᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta SetPrefix_**:star:\n\nLe préfixe a été changé en `{prefix}`.", delete_after=5)
-    #await send_kefta_gif(ctx, delete_after=5)
 
 @bot.command(help="Permet de récupérer tout les messages de la conversation dans les DM",name='savedm',category='Utilitaire')
 async def savedm(ctx):
@@ -516,17 +512,11 @@ async def savedm(ctx):
                 for message in relevant_messages:
                     timestamp = message.created_at.strftime('%Y-%m-%d %H:%M:%S')
                     file.write(f"[{timestamp}] {message.author.name}: {message.content}\n")
-            #await send_kefta_gif(ctx, delete_after=5)
             await ctx.send(f"᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta SaveDM_**:star:\n\nMessages enregistrés dans le fichier {filename}.",delete_after= 5)
-            #await send_kefta_gif(ctx, delete_after=5)
         else:
-            #await send_kefta_gif(ctx, delete_after=5)
             await ctx.send("᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta SaveDM_**:star:\n\nIl n'y a pas suffisamment de messages pour enregistrer la conversation.",delete_after= 5)
-            #await send_kefta_gif(ctx, delete_after=5)
     else:
-        #await send_kefta_gif(ctx, delete_after=5)
         await ctx.send("᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta SaveDM_**:star:\n\nCette commande ne peut être utilisée que dans un DM.",delete_after= 5)
-        #await send_kefta_gif(ctx, delete_after=5)
     await ctx.message.delete()
 
 
@@ -556,17 +546,11 @@ async def savegrp(ctx):
                     timestamp = message.created_at.strftime('%Y-%m-%d %H:%M:%S')
                     file.write(f"[{timestamp}] {message.author.name}: {message.content}\n")
             
-            #await send_kefta_gif(ctx, delete_after=5)
             await ctx.send(f"᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta SaveDM_**:star:\n\nMessages enregistrés dans le fichier {filename}.",delete_after= 5)
-            #await send_kefta_gif(ctx, delete_after=5)
         else:
-            #await send_kefta_gif(ctx, delete_after=5)
             await ctx.send("᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta SaveDM_**:star:\n\nIl n'y a pas suffisamment de messages pour enregistrer la conversation.",delete_after= 5)
-            #await send_kefta_gif(ctx, delete_after=5)
     else:
-        #await send_kefta_gif(ctx, delete_after=5)
         await ctx.send("᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta SaveDM_**:star:\n\nCette commande ne peut être utilisée que dans les groupes.",delete_after= 5)
-        #await send_kefta_gif(ctx, delete_after=5)
     await ctx.message.delete()
 
 @bot.command(help='Affiche l\'avatar d\'un membre',name="avatar",category='Utilitaire')
@@ -575,9 +559,8 @@ async def avatar(ctx, *, member: discord.Member = None):
         member = ctx.message.author
 
     userAvatar = member.avatar
-    #await send_kefta_gif(ctx, delete_after=5)
     await ctx.send(f"᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼᲼:star:**_Kefta Avatar_**:star:\n\n{userAvatar}",delete_after= 10)
-    #await send_kefta_gif(ctx, delete_after=5)
+
 
 
 @bot.command(help='Affiche la bannière d\'un membre',name="banner",category='Utilitaire')
